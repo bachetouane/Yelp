@@ -1,20 +1,41 @@
 package com.example.yelp;
 
+
+
+import com.example.yelp.GlobalState;
+import com.example.yelp.R;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements  OnClickListener {
 
+	EditText edtSearch;
+	Button btnOk;
+	GlobalState gs;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        edtSearch = (EditText) findViewById(R.id.edtSearch);
+        btnOk = (Button) findViewById(R.id.btnOk);
+        btnOk.setOnClickListener(this);
+        gs = (GlobalState) getApplication();
     }
 
-
+    @Override
+	protected void onStart() {
+		super.onStart();
+		btnOk.setEnabled(gs.verifSearchBar(edtSearch));
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -33,4 +54,11 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+	}
 }
