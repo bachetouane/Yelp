@@ -40,7 +40,6 @@ public class Business implements Serializable{
 		        	b.ratingImgUrl = jsonObject.getString("rating_img_url");
 		        	b.snippetText = jsonObject.getString("snippet_text");
 		        	b.snippetImgUrl =jsonObject.getString("snippet_image_url");
-		        	//if(!jsonObject.isNull( "location" ))
 		        	b.city=jsonObject.getJSONObject("location").getString("city");
 		        	b.address=jsonObject.getJSONObject("location").getJSONArray("address").getString(0);
 		        	
