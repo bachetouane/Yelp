@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#1569c7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -10,34 +11,50 @@
 
     <EditText
         android:id="@+id/edtCategory"
+        android:background="#ffffff"
+        android:maxLength="20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="132dp"
-        android:ems="10" />
+        android:ems="10"
+        android:hint="Boulangerie, Sushi, ..." />
 
     <Button
         android:id="@+id/btnOk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/edtCategory"
-        android:layout_below="@+id/edtCategory"
-        android:layout_marginTop="84dp"
-        android:text="Button" />
+        android:layout_below="@+id/edtLocation"
+        android:layout_marginRight="46dp"
+        android:layout_marginTop="43dp"
+        android:background="@drawable/roundedbutton"
+        android:text="Rechercher"
+        android:textColor="#ffffff" />
 
     <EditText
         android:id="@+id/edtLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/btnOk"
+        android:layout_alignRight="@+id/edtCategory"
         android:layout_centerVertical="true"
-        android:ems="10" >
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Lens, Lille, Paris, ..."
+        android:textColor="#837E7C" >
 
         <requestFocus />
     </EditText>
-    
-    
-    
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="43dp"
+        android:adjustViewBounds="true"
+        android:scaleType="center"
+        android:src="@drawable/header_logo" />
 
 </RelativeLayout>
