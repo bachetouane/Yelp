@@ -83,6 +83,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			// On récupère la réponse sous forme de string
 			String response = conn.searchForBusinessesByLocation(
 					this.getCategory(), this.getLocation());
+			//Log.i("TEST", response);
 			//On envoie convertir le string en json pour pouvoir être traité
 			ArrayList<Business> businesses = GlobalState.Parsing(response);
 			// On crée un intent pour pouvoir changer d'activité

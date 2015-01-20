@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -69,6 +70,13 @@ public class Renderer extends Activity {
 												DialogInterface dialog,
 												int which) {
 											// do nothing
+											/*Bundle bundleObject = new Bundle();
+											bundleObject.putSerializable("whereToGo", businesses.get(position));*/
+											
+											Intent passIntent = new Intent();
+											passIntent.setClass(Renderer.this, Localisation.class);
+											passIntent.putExtra("whereToGo", businesses.get(position));
+											startActivity(passIntent);
 										}
 									})
 							.setIcon(android.R.drawable.ic_dialog_info).show();

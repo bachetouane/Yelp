@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 public class Business implements Serializable{
 	private String id;
 	private String name;
@@ -16,6 +18,8 @@ public class Business implements Serializable{
 	private String snippetText;
 	private String ratingImgUrl;
 	private String snippetImgUrl;
+	private String city="";
+	private String address;
 	
 	public Business(){
 		super();
@@ -27,7 +31,7 @@ public class Business implements Serializable{
 		    try {
 		  		b.id = jsonObject.getString("id");
 		        	b.name = jsonObject.getString("name");
-		        	if (!jsonObject.get("phone").toString().isEmpty())
+		        	if (!jsonObject.isNull( "phone" ))
 		        	{
 		        		b.phone = jsonObject.getString("display_phone");
 		        	}
@@ -36,6 +40,10 @@ public class Business implements Serializable{
 		        	b.ratingImgUrl = jsonObject.getString("rating_img_url");
 		        	b.snippetText = jsonObject.getString("snippet_text");
 		        	b.snippetImgUrl =jsonObject.getString("snippet_image_url");
+		        	//if(!jsonObject.isNull( "location" ))
+		        	b.city=jsonObject.getJSONObject("location").getString("city");
+		        	b.address=jsonObject.getJSONObject("location").getJSONArray("address").getString(0);
+		        	
 		        } catch (JSONException e) {
 		            e.printStackTrace();
 		            return null;
@@ -117,6 +125,22 @@ public class Business implements Serializable{
 		public String getImageUrl() {
 			return this.imageUrl;
 		}
+		public String getCity() {
+			return city;
+		}
+		public void setCity(String city) {
+			this.city = city;
+		}
+		
+
+		public String getAddress() {
+			return address;
+		}
+
+		public void setAddress(String address) {
+			this.address = address;
+		}
+		
 	  
 		
 }
