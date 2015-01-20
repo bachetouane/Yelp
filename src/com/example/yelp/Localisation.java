@@ -20,34 +20,26 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Localisation extends Activity implements LocationListener, Serializable {
-	  /*******************************************************/
-	  /** ATTRIBUTS.
-	 /*******************************************************/
+
 	  private LocationManager locationManager;
 	  private GoogleMap gMap;
 	  private Marker marker;
 	  private String whereToGo;
+	  boolean flag=true;
 
-	  /*******************************************************/
-	  /** METHODES / FONCTIONS.
-	 /*******************************************************/
+
 	  /**
 	  * {@inheritDoc}
 	  */
 	  @Override
 	  protected void onCreate(final Bundle savedInstanceState) {
 	      super.onCreate(savedInstanceState);
-	      //Bundle bundleObject=getIntent().getExtras();
 	      Business myBusiness = (Business) getIntent().getSerializableExtra("whereToGo");
-	      Log.i("TACEEEEEEEEEE", "LOCALISATION ligne 42");
 	      whereToGo = myBusiness.getAddress() + " " + myBusiness.getCity();
-	      Log.i("TACEEEEEEEEEE", "LOCALISATION ligne 44");
 	      setContentView(R.layout.fragment);
 
 	      gMap = ((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
 	      marker = gMap.addMarker(new MarkerOptions().title("Vous êtes ici").position(new LatLng(0, 0)));
-	   // Get Current Location
-	      //Location myLocation = locationManager.getLastKnownLocation(provider);
 	  }
 
 	  /**
@@ -73,7 +65,6 @@ public class Localisation extends Activity implements LocationListener, Serializ
 	  public void onPause() {
 	      super.onPause();
 
-	      //On appelle la méthode pour se désabonner
 	      desabonnementGPS();
 	  }
 
@@ -89,7 +80,7 @@ public class Localisation extends Activity implements LocationListener, Serializ
 	  * Méthode permettant de se désabonner de la localisation par GPS.
 	  */
 	  public void desabonnementGPS() {
-	      //Si le GPS est disponible, on s'y abonne
+
 	      locationManager.removeUpdates(this);
 	  }
 
@@ -99,7 +90,7 @@ public class Localisation extends Activity implements LocationListener, Serializ
 	  @Override
 	  public void onLocationChanged(final Location location) {
 	      //On affiche dans un Toat la nouvelle Localisation
-		  Log.i("TARAAAAAAAAAE", "TAAAAAAAARAAAADE onLocationChanged");
+		  if (flag){
 	      final StringBuilder msg = new StringBuilder("lat : ");
 	      msg.append(location.getLatitude());
 	      msg.append( "; lng : ");
@@ -115,7 +106,7 @@ public class Localisation extends Activity implements LocationListener, Serializ
 	      String myLoc = location.getLatitude()+ "," + location.getLongitude();
 	      
 	      new ItineraireTask(this, gMap, myLoc, whereToGo).execute();
-
+		  }
 	  }
 
 	  /**

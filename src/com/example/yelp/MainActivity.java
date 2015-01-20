@@ -38,9 +38,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// On dÃ©finit le design de notre page grace Ã  la page xml crÃ©ee
+		// On définit le design de notre page grace à la page xml créée
 		setContentView(R.layout.activity_main);
-		// On attribue nos objet aux Ã©lements de la page xml
+		// On attribue nos objet aux élements de la page xml
 		edtCategory = (EditText) findViewById(R.id.edtCategory);
 		edtLocation = (EditText) findViewById(R.id.edtLocation);
 		btnOk = (Button) findViewById(R.id.btnOk);
@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	// Lors du click sur le bouton
 	public void onClick(View v) {
-		// On va crÃ©er notre requÃªte
+		// On va créer notre requete
 		YelpApiRequest req = new YelpApiRequest();
 		// On dÃ©finit les paramÃ¨tres de la requÃªte (lieu et categorie)
 		req.setCategory(edtCategory.getText().toString());

@@ -64,14 +64,12 @@ public class Renderer extends Activity {
 										}
 									})
 							// Si l'utilisateur choisit l'itinéraire
-							.setNegativeButton("Itinéraire",
+							.setNegativeButton("Itineraire",
 									new DialogInterface.OnClickListener() {
 										public void onClick(
 												DialogInterface dialog,
 												int which) {
 											// do nothing
-											/*Bundle bundleObject = new Bundle();
-											bundleObject.putSerializable("whereToGo", businesses.get(position));*/
 											
 											Intent passIntent = new Intent();
 											passIntent.setClass(Renderer.this, Localisation.class);

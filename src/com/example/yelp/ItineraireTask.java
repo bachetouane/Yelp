@@ -24,29 +24,20 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-/**
- * ItineraireTask
- * @author Ludovic
- */
+
 public class ItineraireTask extends AsyncTask<Void, Integer, Boolean> {
-  /*******************************************************/
-  /** CONSTANTES.
- /*******************************************************/
+
+	
   private static final String TOAST_MSG = "Calcul de l'itinéraire en cours";
   private static final String TOAST_ERR_MAJ = "Impossible de trouver un itinéraire";
 
-  /*******************************************************/
-  /** ATTRIBUTS.
- /*******************************************************/
   private Context context;
   private GoogleMap gMap;
   private String editDepart;
   private String editArrivee;
   private final ArrayList<LatLng> lstLatLng = new ArrayList<LatLng>();
 
-  /*******************************************************/
-  /** METHODES / FONCTIONS.
- /*******************************************************/
+
   /**
   * Constructeur.
   * @param context
@@ -170,7 +161,7 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean> {
           Toast.makeText(context, TOAST_ERR_MAJ, Toast.LENGTH_SHORT).show();
       }
       else {
-          //On déclare le polyline, c'est-à-dire le trait (ici bleu) que l'on ajoute sur la carte pour tracer l'itinéraire
+          //tracer l'itinéraire
           final PolylineOptions polylines = new PolylineOptions();
           polylines.color(Color.BLUE);
 
@@ -179,17 +170,17 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean> {
                   polylines.add(latLng);
           }
 
-          //On déclare un marker vert que l'on placera sur le départ
+          //marker vert  sur le départ
           final MarkerOptions markerA = new MarkerOptions();
           markerA.position(lstLatLng.get(0));
           markerA.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 
-          //On déclare un marker rouge que l'on mettra sur l'arrivée
+          //marker rouge sur l'arrivée
           final MarkerOptions markerB = new MarkerOptions();
           markerB.position(lstLatLng.get(lstLatLng.size()-1));
           markerB.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
-          //On met à jour la carte
+          //MAJ map
           gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lstLatLng.get(0), 10));
           gMap.addMarker(markerA);
           gMap.addPolyline(polylines);

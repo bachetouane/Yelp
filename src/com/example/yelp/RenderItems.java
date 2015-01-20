@@ -41,7 +41,6 @@ public class RenderItems extends BaseAdapter {
 	@Override
 	public int getCount() {
 		// Fonction qui retourne le nombre d'elements de notre
-		// ArrayList<Business>
 		return listBusiness.size();
 	}
 
