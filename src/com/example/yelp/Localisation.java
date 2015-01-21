@@ -73,7 +73,7 @@ public class Localisation extends Activity implements LocationListener, Serializ
 	  */
 	  public void abonnementGPS() {
 	      //On s'abonne
-	      locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, this);
+	      locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 10, this);
 	  }
 
 	  /**
@@ -90,7 +90,7 @@ public class Localisation extends Activity implements LocationListener, Serializ
 	  @Override
 	  public void onLocationChanged(final Location location) {
 	      //On affiche dans un Toat la nouvelle Localisation
-		  if (flag){
+		  //if (flag){
 	      final StringBuilder msg = new StringBuilder("lat : ");
 	      msg.append(location.getLatitude());
 	      msg.append( "; lng : ");
@@ -106,7 +106,7 @@ public class Localisation extends Activity implements LocationListener, Serializ
 	      String myLoc = location.getLatitude()+ "," + location.getLongitude();
 	      
 	      new ItineraireTask(this, gMap, myLoc, whereToGo).execute();
-		  }
+		 // }
 	  }
 
 	  /**

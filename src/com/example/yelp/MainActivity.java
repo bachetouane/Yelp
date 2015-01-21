@@ -11,6 +11,7 @@ import com.example.yelp.GlobalState;
 import com.example.yelp.R;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -53,6 +54,26 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	// Lors du click sur le bouton
 	public void onClick(View v) {
+		
+		if(edtCategory.getText().toString().trim()=="" || edtCategory.getText().toString().trim().isEmpty())
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+	            alert.setTitle("Erreur");
+	            alert.setMessage("Champ \"catégorie\" non renseigné");
+	            alert.setPositiveButton("OK", null);
+	            alert.show();
+	            return;
+		}
+		
+		if(edtLocation.getText().toString().trim()=="" || edtLocation.getText().toString().trim().isEmpty())
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+	            alert.setTitle("Erreur");
+	            alert.setMessage("Champ \"location\" non renseigné");
+	            alert.setPositiveButton("OK", null);
+	            alert.show();
+	            return;
+		}
 		// On va créer notre requete
 		YelpApiRequest req = new YelpApiRequest();
 		// On dÃ©finit les paramÃ¨tres de la requÃªte (lieu et categorie)
